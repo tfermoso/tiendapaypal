@@ -5,6 +5,11 @@ include("templates/cabecera.php");
 ?>
 <h3>Lista del carrito</h3>
 <div class="table-responsive">
+<?php if($mensaje!=""){ ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo $mensaje; ?>
+    </div>
+    <?php } ?>
     <?php if (!empty($_SESSION["CARRITO"])) { ?>
         <table class="table table-dark">
             <thead>
@@ -23,8 +28,8 @@ include("templates/cabecera.php");
                     <tr>
                         <th scope="row"><?php echo $producto["Nombre"]; ?></th>
                         <td><?php echo $producto["Cantidad"]; ?></td>
-                        <td><?php echo number_format($producto["Precio"],2,",","."); ?></td>
-                        <td><?php echo number_format($producto["Cantidad"] * $producto["Precio"], 2,",","."); ?></td>
+                        <td><?php echo number_format($producto["Precio"], 2, ",", "."); ?></td>
+                        <td><?php echo number_format($producto["Cantidad"] * $producto["Precio"], 2, ",", "."); ?></td>
                         <td>
                             <form action="" method="post">
                                 <input type="hidden" name="ID" id="id" value="<?php echo openssl_encrypt($producto["ID"], COD, KEY); ?>">
@@ -40,7 +45,7 @@ include("templates/cabecera.php");
                         <h3>Total</h3>
                     </td>
                     <td align="right">
-                        <h3><?php echo number_format($total, 2,",","."); ?></h3>
+                        <h3><?php echo number_format($total, 2, ",", "."); ?></h3>
                     </td>
                     <td></td>
 
