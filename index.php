@@ -55,14 +55,10 @@ include("global/conexion.php");
             ?>
                 <div class="col-3">
                     <div class="card ">
-                        <img 
-                        data-bs-toggle="popover"
-                        data-bs-content="<?php echo $producto["Descripcion"]; ?>"
-                        
-                        class="card-img-top" title="<?php echo $producto["Nombre"]; ?>" src="<?php echo $producto["Imagen"]; ?>" alt="Title">
+                        <img data-bs-toggle="popover" data-bs-content="<?php echo $producto["Descripcion"]; ?>" data-bs-trigger="hover" class="card-img-top" title="<?php echo $producto["Nombre"]; ?>" src="<?php echo $producto["Imagen"]; ?>" alt="Title">
                         <div class="card-body">
                             <span><?php echo $producto["Nombre"]; ?></span>
-                            <h4 class="card-title"><?php echo $producto["Precio"]; ?> €</h4>                            
+                            <h4 class="card-title"><?php echo $producto["Precio"]; ?> €</h4>
                             <button name="btnAccion" value="Agregar" type="submit" class="btn btn-primary">Agregar al carrito</button>
                         </div>
                     </div>
@@ -76,7 +72,10 @@ include("global/conexion.php");
         </div>
 
     </div>
-
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
 </body>
 
 </html>
