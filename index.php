@@ -56,15 +56,15 @@ include("carrito.php");
             ?>
                 <div class="col-3">
                     <div class="card ">
-                        <img data-bs-toggle="popover" data-bs-content="<?php echo $producto["Descripcion"]; ?>" data-bs-trigger="hover" class="card-img-top" title="<?php echo $producto["Nombre"]; ?>" src="<?php echo $producto["Imagen"]; ?>" alt="Title">
+                        <img height="300px" data-bs-toggle="popover" data-bs-content="<?php echo $producto["Descripcion"]; ?>" data-bs-trigger="hover" class="card-img-top" title="<?php echo $producto["Nombre"]; ?>" src="<?php echo $producto["Imagen"]; ?>" alt="Title">
                         <div class="card-body">
                             <span><?php echo $producto["Nombre"]; ?></span>
                             <h4 class="card-title"><?php echo $producto["Precio"]; ?> €</h4>
                             <form action="" method="post">
-                                <input type="text" name="ID" id="id" value="<?php echo openssl_encrypt($producto["ID"],COD,KEY); ?>">
-                                <input type="text" name="Nombre" id="nombre" value="<?php echo openssl_encrypt($producto["Nombre"],COD,KEY); ?>">
-                                <input type="text" name="Precio" id="precio" value="<?php echo openssl_encrypt($producto["Precio"],COD,KEY); ?>">
-                                <input type="text" name="Cantidad" id="cantidad" value="<?php echo openssl_encrypt(1,COD,KEY); ?>">
+                                <input type="hidden" name="ID" id="id" value="<?php echo openssl_encrypt($producto["ID"],COD,KEY); ?>">
+                                <input type="hidden" name="Nombre" id="nombre" value="<?php echo openssl_encrypt($producto["Nombre"],COD,KEY); ?>">
+                                <input type="hidden" name="Precio" id="precio" value="<?php echo openssl_encrypt($producto["Precio"],COD,KEY); ?>">
+                                <input type="hidden" name="Cantidad" id="cantidad" value="<?php echo openssl_encrypt(1,COD,KEY); ?>">
                                 <button name="btnAccion" value="Agregar" type="submit" class="btn btn-primary">Agregar al carrito</button>
                             </form>
                         </div>
