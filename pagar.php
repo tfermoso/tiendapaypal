@@ -11,6 +11,11 @@ if($_POST){
     foreach ($_SESSION["CARRITO"] as $indice=>$producto) {
         $total+=$producto["Cantidad"]*$producto["Precio"];
     }
+    $sentencia=$pdo->prepare("insert into tblventas values (NULL,:claveTransaccion,'',now(),:correo,:total,'pendiente')");
+    $sentencia->bindParam(":claveTransaccion",$SID);
+    $sentencia->bindParam(":correo",$_POST["email"]);
+    $sentencia->bindParam(":total",$total);
+    $sentencia->execute();
     echo "<h3>".$total."</h3>";
 }
 
