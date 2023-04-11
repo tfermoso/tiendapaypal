@@ -17,13 +17,15 @@ include("templates/cabecera.php");
                 </tr>
             </thead>
             <tbody>
+                <?php foreach($_SESSION["CARRITO"] as $indice=>$producto) {?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row"><?php echo $producto["Nombre"]; ?></th>
+                    <td><?php echo $producto["Cantidad"]; ?></td>
+                    <td><?php echo $producto["Precio"]; ?></td>
+                    <td><?php echo number_format($producto["Cantidad"]*$producto["Precio"],2); ?></td>
                     <td><button>Eliminar</button></td>
                 </tr>
+                <?php } ?>
                 <tr>
                     <td colspan=3 align="right">
                         <h3>Total</h3>
