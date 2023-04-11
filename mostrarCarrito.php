@@ -25,18 +25,25 @@ include("templates/cabecera.php");
                         <td><?php echo $producto["Cantidad"]; ?></td>
                         <td><?php echo $producto["Precio"]; ?></td>
                         <td><?php echo number_format($producto["Cantidad"] * $producto["Precio"], 2); ?></td>
-                        <td><button>Eliminar</button></td>
+                        <td>
+                            <form action="" method="post">
+                                <input type="hidden" name="ID" id="id" value="<?php echo openssl_encrypt($producto["ID"], COD, KEY); ?>">
+                                <button class="btn btn-danger" type="submit" name="btnAccion" value="Eliminar">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php
-                    $total+=$producto["Cantidad"] * $producto["Precio"];
+                    $total += $producto["Cantidad"] * $producto["Precio"];
                 } ?>
                 <tr>
                     <td colspan=3 align="right">
                         <h3>Total</h3>
                     </td>
-                    <td colspan=2 align="right">
+                    <td align="right">
                         <h3><?php echo number_format($total, 2); ?></h3>
                     </td>
+                    <td></td>
+
 
                 </tr>
 
