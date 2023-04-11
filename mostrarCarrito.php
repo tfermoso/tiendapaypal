@@ -57,11 +57,11 @@ include("templates/cabecera.php");
                             <div class="alert alert-success" role="alert">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Por favor escribe tu correo" aria-describedby="helpId">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Por favor escribe tu correo" aria-describedby="helpId" required>
                                     <small id="helpId" class="text-muted">Los productos se enviarán a este email</small>
                                 </div>
                                 <div class="d-grid gap-2">
-                                  <button type="submit" name="" id="" class="btn btn-primary btn-lg btn-block">Proceder a pagar >></button>
+                                  <button type="submit" name="btnAccion" value="pagar" id="" class="btn btn-primary btn-lg btn-block">Proceder a pagar >></button>
                                 </div>
                             </div>
 
