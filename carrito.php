@@ -1,4 +1,5 @@
 <?php
+session_start();
 $mensaje="";
 if(isset($_POST["btnAccion"])){
     switch ($_POST["btnAccion"]) {
@@ -15,6 +16,20 @@ if(isset($_POST["btnAccion"])){
                         if(is_numeric(openssl_decrypt($_POST["Cantidad"],COD,KEY))){
                             $Cantidad=openssl_decrypt($_POST["Cantidad"],COD,KEY);
                             $mensaje.="OK Cantidad Correcto ".$Cantidad."<br>";
+                            $producto=array(
+                                "ID"=>$ID,
+                                "Nombre"=>$Nombre,
+                                "Precio"=>$Precio,
+                                "Cantidad"=>$Cantidad
+                            );
+                            if(!isset($_SESSION["CARRITO"])){
+                               
+                                $_SESSION["CARRITO"][0]=$producto;
+                            }else{
+                                array_push($_SESSION["CARRITO"],$producto);
+                            }
+                            $mensaje.=print_r($_SESSION["CARRITO"]);
+                       
                         }else{
                             $mensaje.="Upss Cantidad Incorrecto ";
                         }
