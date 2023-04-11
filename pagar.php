@@ -7,6 +7,7 @@ include("templates/cabecera.php");
 <?php
 if($_POST){
     $total=0;
+    $SID=session_id();
     foreach ($_SESSION["CARRITO"] as $indice=>$producto) {
         $total+=$producto["Cantidad"]*$producto["Precio"];
     }
