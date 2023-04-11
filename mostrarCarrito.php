@@ -21,7 +21,12 @@ include("templates/cabecera.php");
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td>@mdo</td>
+      <td><button>Eliminar</button></td>
+    </tr>
+    <tr>
+        <td colspan=3 align="right"><h3>Total</h3></td>
+        <td colspan=2 align="right"><h3><?php echo number_format(300,2) ;?></h3></td>
+      
     </tr>
     
   </tbody>
