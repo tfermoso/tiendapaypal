@@ -1,6 +1,7 @@
 <?php
 include("global/config.php");
 include("global/conexion.php");
+include("carrito.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +41,7 @@ include("global/conexion.php");
     <div class="container">
 
         <div class="alert alert-success" role="alert">
-            Pantalla de mensajes
+            <?php echo $mensaje;?>
             <a href="#" class="badge bg-success">Ver carrito</a>
         </div>
         <div class="row  align-items-center g-2">
@@ -60,10 +61,10 @@ include("global/conexion.php");
                             <span><?php echo $producto["Nombre"]; ?></span>
                             <h4 class="card-title"><?php echo $producto["Precio"]; ?> €</h4>
                             <form action="" method="post">
-                                <input type="text" name="id" id="id" value="<?php echo openssl_encrypt($producto["ID"],COD,KEY); ?>">
-                                <input type="text" name="nombre" id="nombre" value="<?php echo openssl_encrypt($producto["Nombre"],COD,KEY); ?>">
-                                <input type="text" name="precio" id="precio" value="<?php echo openssl_encrypt($producto["Precio"],COD,KEY); ?>">
-                                <input type="text" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(1,COD,KEY); ?>">
+                                <input type="text" name="ID" id="id" value="<?php echo openssl_encrypt($producto["ID"],COD,KEY); ?>">
+                                <input type="text" name="Nombre" id="nombre" value="<?php echo openssl_encrypt($producto["Nombre"],COD,KEY); ?>">
+                                <input type="text" name="Precio" id="precio" value="<?php echo openssl_encrypt($producto["Precio"],COD,KEY); ?>">
+                                <input type="text" name="Cantidad" id="cantidad" value="<?php echo openssl_encrypt(1,COD,KEY); ?>">
                                 <button name="btnAccion" value="Agregar" type="submit" class="btn btn-primary">Agregar al carrito</button>
                             </form>
                         </div>
