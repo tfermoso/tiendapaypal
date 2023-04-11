@@ -25,9 +25,16 @@ if(isset($_POST["btnAccion"])){
                             if(!isset($_SESSION["CARRITO"])){                               
                                 $_SESSION["CARRITO"][0]=$producto;
                             }else{
-                                array_push($_SESSION["CARRITO"],$producto);
+                                $idproductos=array_column($_SESSION["CARRITO"],"ID");
+                                if(in_array($producto["ID"],$idproductos)){
+                                    $mensaje="El artículo ya esta en el carrito";
+                                }else{
+                                    array_push($_SESSION["CARRITO"],$producto);
+                                    $mensaje="Artículo añadido al carrito";
+                                }
+                                
                             }
-                            $mensaje.=print_r($_SESSION["CARRITO"],true);
+                           
                        
                         }else{
                             $mensaje.="Upss Cantidad Incorrecto ";
