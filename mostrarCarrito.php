@@ -17,21 +17,25 @@ include("templates/cabecera.php");
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($_SESSION["CARRITO"] as $indice=>$producto) {?>
-                <tr>
-                    <th scope="row"><?php echo $producto["Nombre"]; ?></th>
-                    <td><?php echo $producto["Cantidad"]; ?></td>
-                    <td><?php echo $producto["Precio"]; ?></td>
-                    <td><?php echo number_format($producto["Cantidad"]*$producto["Precio"],2); ?></td>
-                    <td><button>Eliminar</button></td>
-                </tr>
-                <?php } ?>
+
+                <?php $total = 0;
+                foreach ($_SESSION["CARRITO"] as $indice => $producto) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $producto["Nombre"]; ?></th>
+                        <td><?php echo $producto["Cantidad"]; ?></td>
+                        <td><?php echo $producto["Precio"]; ?></td>
+                        <td><?php echo number_format($producto["Cantidad"] * $producto["Precio"], 2); ?></td>
+                        <td><button>Eliminar</button></td>
+                    </tr>
+                <?php
+                    $total+=$producto["Cantidad"] * $producto["Precio"];
+                } ?>
                 <tr>
                     <td colspan=3 align="right">
                         <h3>Total</h3>
                     </td>
                     <td colspan=2 align="right">
-                        <h3><?php echo number_format(300, 2); ?></h3>
+                        <h3><?php echo number_format($total, 2); ?></h3>
                     </td>
 
                 </tr>
@@ -40,9 +44,9 @@ include("templates/cabecera.php");
         </table>
     <?php } else { ?>
         <div class="alert alert-primary" role="alert">
-            <strong>No hay artículos en el carrito</strong> 
+            <strong>No hay artículos en el carrito</strong>
         </div>
-        
+
     <?php } ?>
 </div>
 
