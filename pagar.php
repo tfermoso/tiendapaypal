@@ -56,6 +56,19 @@ if ($_POST) {
             label: 'pay',
             height: 40
         },
+        payment:function(data,actions){
+            return actions.payment.create({
+                payment:{
+                    transactions:[
+                        {
+                            amount: {total: '<?php echo $total ?>',currency:'EUR'},
+                            description: 'Compra de productos en tienda',
+                            custom: '<?php echo $SID ?>'    
+                        }
+                    ]
+                }
+            });
+        },
 /*
         // Call your server to set up the transaction
         createOrder: function(data, actions) {
