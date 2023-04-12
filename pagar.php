@@ -82,7 +82,8 @@ if ($_POST) {
 */
         // Call your server to finalize the transaction
         onApprove: function(data, actions) {
-            alert("Pago completado");
+            console.log(data);
+            window.location="verificador.php?token="+data.facilitatorAccessToken;
             /*
             return fetch('/demo/checkout/api/paypal/order/' + data.orderID + '/capture/', {
                 method: 'post'
