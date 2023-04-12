@@ -62,24 +62,15 @@ if ($_POST) {
                         {
                             amount: {value: '<?php echo $total ?>',currency:'EUR'},
                             description: 'Compra de productos en tienda',
-                            custom: '<?php echo $SID ?>'    
+                            metadata: {
+                                custom:'<?php echo $SID ?>#<?php echo openssl_encrypt($idVenta,COD,KEY)?>'    
+                            }
                         }
                     ]
                
             });
         },
-/*
-        // Call your server to set up the transaction
-        createOrder: function(data, actions) {
-            return fetch('/demo/checkout/api/paypal/order/create/', {
-                method: 'post'
-            }).then(function(res) {
-                return res.json();
-            }).then(function(orderData) {
-                return orderData.id;
-            });
-        },
-*/
+
         // Call your server to finalize the transaction
         onApprove: function(data, actions) {
             return actions.order.capture()
