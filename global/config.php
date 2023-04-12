@@ -5,4 +5,5 @@ define("SERVIDOR","localhost");
 define("USUARIO","root");
 define("PASSWORD","");
 define("BD","tiendapaypal");
+define("CLIENTIDPAYPAL","AdfZo6m0qnNparPX5S_Q9ymLKJn1h-2B06CKB4i4nNHddwd8rQN7ORAz90tesaaQMXorRrcLCKJDe11a");
 ?>
