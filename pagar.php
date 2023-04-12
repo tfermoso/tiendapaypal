@@ -77,7 +77,11 @@ if ($_POST) {
                 .then(function(details) {                    
                     console.log("Pago completado")
                     console.log(details);
-                    window.location="verificador.php?custom="+details.purchase_units[0].reference_id
+                    let custom=details.purchase_units[0].reference_id;
+                    let user=details.player.email_address;
+                    let status=details.status;
+                    let importe=details.purchase_units[0].amount.value;
+                    //window.location="verificador.php?custom="+details.purchase_units[0].reference_id
 
                 })
         }

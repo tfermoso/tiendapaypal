@@ -1,5 +1,5 @@
 <?php 
-print_r($_GET);
+var_dump($_GET);
 /*
 include("global/config.php");
 $Login=curl_init("https://api-m.sandbox.paypal.com/v1/oauth2/token");
