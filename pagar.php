@@ -56,17 +56,16 @@ if ($_POST) {
             label: 'pay',
             height: 40
         },
-        payment:function(data,actions){
-            return actions.payment.create({
-                payment:{
-                    transactions:[
+        createOrder:function(data,actions){
+            return actions.order.create({
+                purchase_units:[
                         {
-                            amount: {total: '<?php echo $total ?>',currency:'EUR'},
+                            amount: {value: '<?php echo $total ?>',currency:'EUR'},
                             description: 'Compra de productos en tienda',
                             custom: '<?php echo $SID ?>'    
                         }
                     ]
-                }
+               
             });
         },
 /*
