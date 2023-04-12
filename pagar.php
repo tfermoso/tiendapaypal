@@ -30,7 +30,7 @@ if ($_POST) {
 ?>
 
 <!-- Include the PayPal JavaScript SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENTIDPAYPAL?>&currency=EUR"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENTIDPAYPAL ?>&currency=EUR"></script>
 <div class="p-5 mb-4 bg-light rounded-3 text-center">
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">¡Paso Final!</h1>
@@ -56,28 +56,30 @@ if ($_POST) {
             label: 'pay',
             height: 40
         },
-        createOrder:function(data,actions){
+        createOrder: function(data, actions) {
             return actions.order.create({
-                purchase_units:[
-                        {
-                            amount: {value: '<?php echo $total ?>',currency:'EUR'},
-                            description: 'Compra en la tienda',
-                            reference_id: {
-                                custom:'<?php echo $SID ?>#<?php echo openssl_encrypt($idVenta,COD,KEY)?>'    
-                            }
-                        }
-                    ]
-               
+                purchase_units: [{
+                    amount: {
+                        value: '<?php echo $total ?>',
+                        currency: 'EUR'
+                    },
+                    description: 'Compra en la tienda',
+                    reference_id: '<?php echo $SID ?>#<?php echo openssl_encrypt($idVenta, COD, KEY) ?>'
+
+                }]
+
             });
         },
 
         // Call your server to finalize the transaction
         onApprove: function(data, actions) {
             return actions.order.capture()
-            .then(function(details){
-                console.log("Pago completado")
-                console.log(details);
-            })
+                .then(function(details) {                    
+                    console.log("Pago completado")
+                    console.log(details);
+                    window.location="verificador.php?custom="+details.purchase_units[0].reference_id
+
+                })
         }
 
     }).render('#paypal-button-container');
