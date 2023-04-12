@@ -30,7 +30,7 @@ if ($_POST) {
 ?>
 
 <!-- Include the PayPal JavaScript SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=".CLIENTIDPAYPAL."&currency=EUR"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENTIDPAYPAL?>&currency=EUR"></script>
 <div class="p-5 mb-4 bg-light rounded-3 text-center">
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">¡Paso Final!</h1>
