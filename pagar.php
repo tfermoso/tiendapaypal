@@ -61,8 +61,8 @@ if ($_POST) {
                 purchase_units:[
                         {
                             amount: {value: '<?php echo $total ?>',currency:'EUR'},
-                            description: 'Compra de productos en tienda',
-                            metadata: {
+                            description: 'Compra en la tienda',
+                            reference_id: {
                                 custom:'<?php echo $SID ?>#<?php echo openssl_encrypt($idVenta,COD,KEY)?>'    
                             }
                         }
