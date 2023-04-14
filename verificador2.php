@@ -35,4 +35,5 @@ $sentencia->execute();
 //borramos sesión
 unset($_SESSION["CARRITO"]);
 unset($_SESSION["idVenta"]);
+
 echo json_encode($respuesta);
