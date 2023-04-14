@@ -115,6 +115,7 @@ if ($_POST) {
                         }).then(data => data.text())
                         .then(datos => {
                             console.log(datos);
+                            window.location="descargas.php";
                         }).catch(err => {
                             console.log(err);
                         })
