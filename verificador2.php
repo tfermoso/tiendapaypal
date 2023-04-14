@@ -32,5 +32,7 @@ $sentencia->bindParam(":paypaldatos",$json);
 $sentencia->bindParam(":estado",$status);
 $sentencia->bindParam(":IDVenta",$idVenta);
 $sentencia->execute();
-
+//borramos sesión
+unset($_SESSION["CARRITO"]);
+unset($_SESSION["idVenta"]);
 echo json_encode($respuesta);
