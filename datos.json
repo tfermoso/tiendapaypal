@@ -1,0 +1,76 @@
+{
+    "datos": {
+        "id": "1RU28573W9762394K",
+        "intent": "CAPTURE",
+        "status": "COMPLETED",
+        "purchase_units": [
+            {
+                "reference_id": "mgnesr7obfp7f3tv1fd4e73r7o#ux5ffecJKW9a7JleC9ympA==",
+                "amount": {
+                    "currency_code": "EUR",
+                    "value": "1500.50"
+                },
+                "payee": {
+                    "email_address": "sb-toeuo25493473@business.example.com",
+                    "merchant_id": "NUQH47MTDQPDN"
+                },
+                "description": "Compra en la tienda",
+                "soft_descriptor": "PAYPAL *TEST STORE",
+                "shipping": {
+                    "name": {
+                        "full_name": "Juan Perez"
+                    },
+                    "address": {
+                        "address_line_1": "calle Vilamari 76993- 17469",
+                        "admin_area_2": "Albacete",
+                        "admin_area_1": "Albacete",
+                        "postal_code": "02001",
+                        "country_code": "ES"
+                    }
+                },
+                "payments": {
+                    "captures": [
+                        {
+                            "id": "976007154B2198130",
+                            "status": "COMPLETED",
+                            "amount": {
+                                "currency_code": "EUR",
+                                "value": "1500.50"
+                            },
+                            "final_capture": true,
+                            "seller_protection": {
+                                "status": "ELIGIBLE",
+                                "dispute_categories": [
+                                    "ITEM_NOT_RECEIVED",
+                                    "UNAUTHORIZED_TRANSACTION"
+                                ]
+                            },
+                            "create_time": "2023-04-14T14:14:44Z",
+                            "update_time": "2023-04-14T14:14:44Z"
+                        }
+                    ]
+                }
+            }
+        ],
+        "payer": {
+            "name": {
+                "given_name": "Juan",
+                "surname": "Perez"
+            },
+            "email_address": "prueba@formacom.com",
+            "payer_id": "7WNYTVM4YR9EL",
+            "address": {
+                "country_code": "ES"
+            }
+        },
+        "create_time": "2023-04-14T14:14:16Z",
+        "update_time": "2023-04-14T14:14:44Z",
+        "links": [
+            {
+                "href": "https://api.sandbox.paypal.com/v2/checkout/orders/1RU28573W9762394K",
+                "rel": "self",
+                "method": "GET"
+            }
+        ]
+    }
+}

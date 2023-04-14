@@ -59,70 +59,70 @@ if ($_POST) {
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
 
-    style: {
-    color: 'blue',
-    shape: 'pill',
-    label: 'pay',
-    height: 40
-    },
-    createOrder: function(data, actions) {
-    return actions.order.create({
-    purchase_units: [{
-    amount: {
-    value: '<?php echo $total ?>',
-    currency: 'EUR'
-    },
-    description: 'Compra en la tienda',
-    reference_id: '<?php echo $SID ?>#<?php echo openssl_encrypt($idVenta, COD, KEY) ?>'
+        style: {
+            color: 'blue',
+            shape: 'pill',
+            label: 'pay',
+            height: 40
+        },
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '<?php echo $total ?>',
+                        currency: 'EUR'
+                    },
+                    description: 'Compra en la tienda',
+                    reference_id: '<?php echo $SID ?>#<?php echo openssl_encrypt($idVenta, COD, KEY) ?>'
 
-    }]
+                }]
 
-    });
-    },
-    onCancel: function(data) {
-    alert("Pago cancelado");
-    console.log(data);
-    },
+            });
+        },
+        onCancel: function(data) {
+            alert("Pago cancelado");
+            console.log(data);
+        },
 
-    // Call your server to finalize the transaction
-    onApprove: function(data, actions) {
-    return actions.order.capture()
-    .then(function(details) {
-    /*
-    console.log("Pago completado")
-    console.log(details);
+        // Call your server to finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture()
+                .then(function(details) {
+                    /*
+                    console.log("Pago completado")
+                    console.log(details);
 
-    let custom=details.purchase_units[0].reference_id.split("#");
-    let user=details.payer.email_address;
-    let status=details.status;
-    let importe=details.purchase_units[0].amount.value;
-    let resp={
-    custom,
-    user,
-    status,
-    importe
-    }
-    window.location="verificador.php?respuestaventa="+JSON.stringify(resp);
-    */
-    fetch("verificador2.php", {
-    method: "POST",
-    headers: {
-    'content-type': 'application/json'
-    },
-    body: JSON.stringify({
-    datos: details
-    })
-    }).then(data => data.text())
-    .then(datos => {
-    console.log(datos);
-    }).catch(err => {
-    console.log(err);
-    })
-    })
-    }
+                    let custom=details.purchase_units[0].reference_id.split("#");
+                    let user=details.payer.email_address;
+                    let status=details.status;
+                    let importe=details.purchase_units[0].amount.value;
+                    let resp={
+                    custom,
+                    user,
+                    status,
+                    importe
+                    }
+                    window.location="verificador.php?respuestaventa="+JSON.stringify(resp);
+                    */
+                    fetch("verificador2.php", {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                datos: details
+                            })
+                        }).then(data => data.text())
+                        .then(datos => {
+                            console.log(datos);
+                        }).catch(err => {
+                            console.log(err);
+                        })
+                })
+        }
 
     }).render('#paypal-button-container');
-    </script>
-    <?php
-    include("templates/pie.php")
-    ?>
+</script>
+<?php
+include("templates/pie.php")
+?>
