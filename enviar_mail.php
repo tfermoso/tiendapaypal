@@ -4,14 +4,14 @@ use PHPMailer\PHPMailer\{PHPMailer,SMTP,Exception};
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 require 'phpmailer/src/Exception.php';
-require 'global/config.php';
+
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER; //SMTP::DEBUG_OFF                     //Enable verbose debug output
+    $mail->SMTPDebug = SMTP::DEBUG_OFF;//SMTP::DEBUG_SERVER; //SMTP::DEBUG_OFF                     //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = EMAILHOST;                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -22,7 +22,7 @@ try {
 
     //Recipients
     $mail->setFrom(EMAILUSER, 'Tienda');
-    $mail->addAddress('cursoformacom2023@gmail.com', 'Joe User');     //Add a recipient
+    $mail->addAddress($correo);     //Add a recipient
     //$mail->addAddress('ellen@example.com');               //Name is optional
     $mail->addReplyTo(EMAILUSER, 'Information');
     //$mail->addCC('cc@example.com');
@@ -34,13 +34,15 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Subject = 'Su pedido'.$cod_venta.' se ha completado';
+    $mail->Body    = 'Este es el resumen de su pedido <strong>'.$cod_venta.'</strong><br>
+    <p>'.json_encode($venta).'</p>';
+    $mail->AltBody = 'Este es el resumen de su pedido <strong>'.$cod_venta.'</strong><br>
+    <p>'.json_encode($venta).'</p>';
 
     $mail->send();
-    echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    exit();
 }
 

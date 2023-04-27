@@ -33,7 +33,7 @@ include("templates/cabecera.php");
                         <td>
                             <form action="" method="post">
                                 <input type="hidden" name="ID" id="id" value="<?php echo openssl_encrypt($producto["ID"], COD, KEY); ?>">
-                                <button class="btn btn-danger" type="submit" name="btnAccion" value="Eliminar">Eliminar</button>
+                                <button  class="btn btn-danger" type="submit" name="btnAccion" value="Eliminar">Eliminar</button>
                             </form>
                         </td>
                     </tr>
